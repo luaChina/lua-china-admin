@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes();
+Route::group([
+    'middleware' => 'auth.admin:admin'
+], function () {
+    Route::get('/', 'HomeController@index');
+    Route::resource('/admins', 'AdminController');
+    Route::resource('/users', 'UserController');
+    Route::resource('/posts', 'PostController');
+    Route::resource('/tags', 'TagController');
 });
