@@ -10,12 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -26,13 +21,17 @@
     <main class="py-4">
         <div class="row">
             <div class="col-md-2">
-                @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
+                <div id="sidebar">
+                    @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
+                </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 @yield('content')
             </div>
         </div>
     </main>
 </div>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

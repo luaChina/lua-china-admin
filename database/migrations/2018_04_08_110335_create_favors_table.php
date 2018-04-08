@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateFavorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('favors', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('tag_id');
             $table->unsignedInteger('user_id');
-            $table->text('title');
-            $table->string('thumbnail');
-            $table->text('content');
-            $table->unsignedInteger('read_count')->default(0);
-
-            $table->softDeletes();
+            $table->unsignedInteger('post_id');
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -39,6 +33,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('favors');
     }
 }

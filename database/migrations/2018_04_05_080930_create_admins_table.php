@@ -20,10 +20,10 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->rememberToken();
 
+            $table->softDeletes();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-
-            $table->softDeletes();
         });
     }
 

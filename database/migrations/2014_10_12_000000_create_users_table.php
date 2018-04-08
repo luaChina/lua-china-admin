@@ -18,13 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('avatar')->default('');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->string('password');
             $table->string('remember_token', 100)->default('');
 
+            $table->softDeletes();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-
-            $table->softDeletes();
         });
     }
 

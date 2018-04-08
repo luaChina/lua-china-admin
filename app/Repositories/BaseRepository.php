@@ -13,10 +13,20 @@ class BaseRepository
 {
     protected $model;
 
+    public function get()
+    {
+        return $this->model->get();
+    }
+
     public function getPagination($withTrashed = false)
     {
         if ($withTrashed) {
             return $this->model->paginate();
         }
+    }
+
+    public function create($massArr)
+    {
+        return $this->model->create($massArr);
     }
 }
