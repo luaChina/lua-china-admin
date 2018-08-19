@@ -28830,8 +28830,27 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a);
 Vue.component('example-component', __webpack_require__(183));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict';
+
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(document.getElementsByClassName('needs-validation'), function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
 
 /***/ }),
 /* 77 */

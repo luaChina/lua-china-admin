@@ -11,10 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(UserSeeder::class);
-         $this->call(TagSeeder::class);
-         $this->call(PostSeeder::class);
-         $this->call(CommentSeeder::class);
-         $this->call(FavorSeeder::class);
+        if (config('app.env') === 'production') {
+            $this->call(AdminSeeder::class);
+            $this->call(TagSeeder::class);
+        } else {
+            $this->call(AdminSeeder::class);
+            $this->call(UserSeeder::class);
+            $this->call(TagSeeder::class);
+            $this->call(PostSeeder::class);
+            $this->call(CommentSeeder::class);
+            $this->call(FavorSeeder::class);
+        }
     }
 }

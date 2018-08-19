@@ -16,7 +16,7 @@ class PostRepository extends BaseRepository
         $this->model = $post;
     }
 
-    public function getPagination($withTrashed = false)
+    public function getPagination(bool $withTrashed = false)
     {
         return $this->model->with('tag', 'user')->paginate();
     }

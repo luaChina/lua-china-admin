@@ -18,18 +18,16 @@
 <body>
 <div id="app">
     @include('components.header')
-    <main class="py-4">
-        <div class="row">
-            <div class="col-md-2">
-                <div id="sidebar">
-                    @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
-                </div>
-            </div>
-            <div class="col-md-9">
-                @yield('content')
+    <div class="row">
+        <div class="col-md-2">
+            <div id="sidebar">
+                @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
             </div>
         </div>
-    </main>
+        <div class="col-md-9">
+            @yield('content')
+        </div>
+    </div>
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

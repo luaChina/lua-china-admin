@@ -18,15 +18,22 @@ class BaseRepository
         return $this->model->get();
     }
 
-    public function getPagination($withTrashed = false)
+    public function getPagination(bool $withTrashed = false)
     {
         if ($withTrashed) {
+            return $this->model->withTrashed()->paginate();
+        } else {
             return $this->model->paginate();
         }
     }
 
-    public function create($massArr)
+    public function create(array $massArr)
     {
         return $this->model->create($massArr);
+    }
+
+    public function find(int $id)
+    {
+        return $this->model->findOrFail($id);
     }
 }

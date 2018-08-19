@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends User
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -27,4 +28,9 @@ class Admin extends User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function adminPermissions()
+    {
+        return $this->hasMany(AdminPermission::class);
+    }
 }
