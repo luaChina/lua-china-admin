@@ -18,16 +18,12 @@
 <body>
 <div id="app">
     @include('components.header')
-    <div class="row">
-        <div class="col-md-2">
-            <div id="sidebar">
-                @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
-            </div>
-        </div>
-        <div class="col-md-9">
+    <el-container>
+        @includewhen(auth()->guard('admin')->check(), 'components.sidebar')
+        <el-main>
             @yield('content')
-        </div>
-    </div>
+        </el-main>
+    </el-container>
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

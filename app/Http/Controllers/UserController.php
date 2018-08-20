@@ -14,7 +14,15 @@ class UserController extends Controller
      */
     public function index(UserRepository $userRepository)
     {
-        return view('user.index')->with(['users' => $userRepository->getPagination(true)]);
+        $userPagination = $userRepository->getPagination(true);
+        $users = $userRepository->get(true);
+        $lockedUsers = $users->filter(function ($value, $key) {
+            return !is_null($value->deleted_at);
+        });
+        $normalUsers = $users->filter(function ($value, $key) {
+            return is_null($value->deleted_at);
+        });
+        return view('user.index')->with(compact('userPagination', 'normalUsers', 'lockedUsers'));
     }
 
     /**

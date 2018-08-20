@@ -8,6 +8,7 @@
         </ol>
     </nav>
     <form action="/admins/{{ $admin->id }}" method="post" class="needs-validation" novalidate>
+        {{ method_field('PUT') }}
         {{ csrf_field() }}
         <div class="form-group row">
             <div class="col-md-2">

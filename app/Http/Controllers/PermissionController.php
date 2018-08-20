@@ -14,9 +14,9 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(PermissionRepository $permissionRepository)
+    public function index()
     {
-        return view('permission.index')->with(['permissions' => $permissionRepository->getPagination()]);
+        return view('permission.index')->with(['permissions' => config('permission')]);
     }
 
     /**

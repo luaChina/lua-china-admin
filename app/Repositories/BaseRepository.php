@@ -13,8 +13,11 @@ class BaseRepository
 {
     protected $model;
 
-    public function get()
+    public function get(bool $withTrashed = false)
     {
+        if ($withTrashed) {
+            return $this->model->withTrashed()->get();
+        }
         return $this->model->get();
     }
 
@@ -22,9 +25,8 @@ class BaseRepository
     {
         if ($withTrashed) {
             return $this->model->withTrashed()->paginate();
-        } else {
-            return $this->model->paginate();
         }
+        return $this->model->paginate();
     }
 
     public function create(array $massArr)
@@ -35,5 +37,10 @@ class BaseRepository
     public function find(int $id)
     {
         return $this->model->findOrFail($id);
+    }
+
+    public function insert(array $massArr)
+    {
+        return $this->model->insert($massArr);
     }
 }

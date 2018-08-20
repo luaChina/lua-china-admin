@@ -11,18 +11,14 @@
         <tr>
             <td>id</td>
             <td>name</td>
-            <td>created_at</td>
-            <td>updated_at</td>
         </tr>
         </thead>
 
         <tbody>
         @foreach($permissions as $permission)
             <tr>
-                <td>{{ $permission->id }}</td>
-                <td>{{ $permission->name}}</td>
-                <td>{{ $permission->created_at }}</td>
-                <td>{{ $permission->updated_at}}</td>
+                <td>{{ $permission['id'] }}</td>
+                <td>{{ $permission['name'] }}</td>
             </tr>
         @endforeach
         </tbody>

@@ -33,7 +33,11 @@
                         <button type="button" class="btn btn-block">^_^</button>
                     @else
                         <a href="/admins/{{ $admin->id }}/edit" class="btn btn-primary">编辑</a>
-                        <button type="button" class="btn btn-danger">禁用</button>
+                        @if($admin->deleted_at === null)
+                            <button type="button" class="btn btn-danger">禁用</button>
+                        @else
+                            <button type="button" class="btn btn-success">恢复</button>
+                        @endif
                     @endif
                 </td>
             </tr>

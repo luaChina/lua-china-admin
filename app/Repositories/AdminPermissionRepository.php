@@ -15,4 +15,9 @@ class AdminPermissionRepository extends BaseRepository
     {
         $this->model = $adminPermission;
     }
+
+    public function deleteByAdminId(int $id)
+    {
+        $this->model->where('admin_id', $id)->delete($id);
+    }
 }

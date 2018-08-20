@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\AddAdminRequest;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\Repository\AdminPermissionRepository;
 use App\Repository\AdminRepository;
-use App\Repository\PermissionRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -98,11 +98,44 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAdminRequest $request, int $id, AdminRepository $adminRepository, AdminPermissionRepository $adminPermissionRepository)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $admin = $adminRepository->find($id);
+            if ($request->has('password') && !is_null($request->get('password'))) {
+                $admin->update([
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'password' => bcrypt($request->get('password')),
+                ]);
+            } else {
+                $admin->update([
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                ]);
+            }
+            $adminPermissionRepository->deleteByAdminId($admin->id);
+            $adminPermissions = [];
+            foreach ($request->get('permissions') as $permissionId) {
+                $adminPermissions[] = [
+                    'admin_id' => $admin->id,
+                    'permission_id' => $permissionId
+                ];
+            }
+            $adminPermissionRepository->insert($adminPermissions);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            if (config('app.env') !== 'production') {
+                dd($e);
+            }
+            Log::error($e->getMessage());
+            return back()->withInput()->withErrors(['system' => '系统错误']);
+        }
+        return redirect('/admins');
     }
 
     /**

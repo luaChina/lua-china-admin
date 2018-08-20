@@ -7,8 +7,8 @@
  */
 return [
     'user' => [
-        'locked' => 'locked',
-        'normal' => 'normal',
+        'locked' => '禁用',
+        'normal' => '正常',
     ],
     'post' => [
         'down' => 'down from site',
