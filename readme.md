@@ -1,5 +1,5 @@
 # lua-china.com 管理员端
-
+![Build status](https://travis-ci.org/luaChina/lua-china-admin.svg?branch=master)
 ## 技术选型
 
 #### 后端
