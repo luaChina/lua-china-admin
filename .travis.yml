@@ -1,9 +1,11 @@
 language: node_js
 node_js:
-- 8.9
+  - 8.9
 before_install:
-- openssl aes-256-cbc -K $encrypted_16130f077f6a_key -iv $encrypted_16130f077f6a_iv
+  - mkdir ~/.ssh
+  - openssl aes-256-cbc -K $encrypted_16130f077f6a_key -iv $encrypted_16130f077f6a_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 install:
-  - npm install
-  - npm run build --prod
+  - ssh root@115.28.82.133
+  - cd /var/www/lua-china-backend
+  - git pull
