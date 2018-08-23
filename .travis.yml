@@ -5,6 +5,4 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_8cc84dc4d66a_key -iv $encrypted_8cc84dc4d66a_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 install:
-- ssh -o "StrictHostKeyChecking no" root@115.28.82.133
-- cd /var/www/lua-china-admin
-- git pull
+- ssh -o "StrictHostKeyChecking no" root@115.28.82.133 cd /var/www/lua-china-admin && git pull
