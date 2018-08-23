@@ -17,6 +17,15 @@
                 <a href="/messages">
                     <el-menu-item index="1-3">反馈消息</el-menu-item>
                 </a>
+                <a href="/">
+                    <el-menu-item index="1-4">系统日志</el-menu-item>
+                </a>
+                <a href="/dashboard">
+                    <el-menu-item index="1-5">系统监控</el-menu-item>
+                </a>
+                <a href="/clear-cache">
+                    <el-menu-item index="1-6">缓存清理</el-menu-item>
+                </a>
             </el-menu-item-group>
         </el-submenu>
         <el-submenu index="2">

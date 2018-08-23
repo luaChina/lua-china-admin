@@ -16,7 +16,8 @@ Auth::routes();
 Route::group([
     'middleware' => 'auth.admin:admin'
 ], function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'SystemController@dashboard');
+    Route::get('/dashboard', 'SystemController@dashboard');
 
     Route::resource('/admins', 'AdminController');
     Route::resource('/permissions', 'PermissionController');
