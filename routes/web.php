@@ -20,9 +20,14 @@ Route::group([
     Route::get('/dashboard', 'SystemController@dashboard');
 
     Route::resource('/admins', 'AdminController');
-    Route::resource('/permissions', 'PermissionController');
+    Route::patch('/admins/{id}/restore', 'AdminController@restore');
+    Route::resource('/admin-permissions', 'PermissionController');
 
     Route::resource('/users', 'UserController');
+    Route::patch('/users/{id}/restore', 'UserController@restore');
+
     Route::resource('/posts', 'PostController');
+    Route::patch('/posts/{id}/restore', 'PostController@restore');
+
     Route::resource('/tags', 'TagController');
 });

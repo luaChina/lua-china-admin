@@ -19,7 +19,7 @@ class CreateAdminPermissionsTable extends Migration
             $table->unsignedInteger('permission_id');
 
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });

@@ -11,7 +11,7 @@
                 <a href="/admins">
                     <el-menu-item index="1-1">管理员管理</el-menu-item>
                 </a>
-                <a href="/admin-permissions">
+                <a href="/admins/permissions">
                     <el-menu-item index="1-2">权限管理</el-menu-item>
                 </a>
                 <a href="/messages">

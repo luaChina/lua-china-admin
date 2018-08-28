@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminPermission;
-use App\Repository\AdminPermissionRepository;
-use App\Repository\PermissionRepository;
+use App\Repositories\AdminPermissionRepository;
+use App\Repositories\PermissionRepository;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -16,7 +16,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('permission.index')->with(['permissions' => config('permission')]);
+        return view('admin.permission.index')->with(['permissions' => config('permission')]);
     }
 
     /**

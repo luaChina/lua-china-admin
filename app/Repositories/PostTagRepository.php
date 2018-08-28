@@ -7,12 +7,13 @@ namespace App\Repositories;
  * Date: 05/04/2018
  * Time: 18:17
  */
-class UserRepository extends BaseRepository
+class PostTagRepository extends BaseRepository
 {
     protected $model;
 
-    public function __construct(\App\Models\User $user)
+    public function __construct(\App\Models\PostTag $postTag)
     {
-        $this->model = $user;
+        $this->model = $postTag;
     }
+
 }

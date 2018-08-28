@@ -9,7 +9,7 @@ class FavorSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\App\Repository\UserRepository $userRepository, \App\Repository\PostRepository $postRepository, \App\Repository\FavorRepository $favorRepository)
+    public function run(\App\Repositories\UserRepository $userRepository, \App\Repositories\PostRepository $postRepository, \App\Repositories\FavorRepository $favorRepository)
     {
         $users = $userRepository->get();
         $posts = $postRepository->get();

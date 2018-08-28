@@ -9,7 +9,7 @@ class PostSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\App\Repository\PostRepository $postRepository, \App\Repository\TagRepository $tagRepository, \App\Repository\UserRepository $userRepository)
+    public function run(\App\Repositories\PostRepository $postRepository, \App\Repositories\PostTagRepository $tagRepository, \App\Repositories\UserRepository $userRepository)
     {
         $faker = Faker\Factory::create();
         $tags = $tagRepository->get();
@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         foreach ($tags as $tag) {
             foreach ($users as $user) {
                 $postRepository->create([
-                    'tag_id' => $tag->id,
+                    'post_tag_id' => $tag->id,
                     'user_id' => $user->id,
                     'title' => $faker->paragraph(),
                     'content' => $faker->paragraph(),

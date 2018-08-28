@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\AddAdminRequest;
 use App\Http\Requests\Admin\UpdateAdminRequest;
-use App\Repository\AdminPermissionRepository;
-use App\Repository\AdminRepository;
+use App\Repositories\AdminPermissionRepository;
+use App\Repositories\AdminRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -107,13 +107,13 @@ class AdminController extends Controller
             $admin = $adminRepository->find($id);
             if ($request->has('password') && !is_null($request->get('password'))) {
                 $admin->update([
-                    'name' => $request->get('name'),
-                    'email' => $request->get('email'),
+                    'name'     => $request->get('name'),
+                    'email'    => $request->get('email'),
                     'password' => bcrypt($request->get('password')),
                 ]);
             } else {
                 $admin->update([
-                    'name' => $request->get('name'),
+                    'name'  => $request->get('name'),
                     'email' => $request->get('email'),
                 ]);
             }
@@ -121,7 +121,7 @@ class AdminController extends Controller
             $adminPermissions = [];
             foreach ($request->get('permissions') as $permissionId) {
                 $adminPermissions[] = [
-                    'admin_id' => $admin->id,
+                    'admin_id'      => $admin->id,
                     'permission_id' => $permissionId
                 ];
             }
@@ -149,5 +149,15 @@ class AdminController extends Controller
         $admin = $adminRepository->find($id);
         $admin->delete();
         return response()->json(['status' => 0, 'message' => 'success'], 200);
+    }
+
+    public function restore(int $id, AdminRepository $adminRepository)
+    {
+        $admin = $adminRepository->find($id, true);
+        if($admin->restore()){
+            return response()->json(['status' => 0, 'message' => 'success'], 200);
+        } else {
+            return response()->json(trans('error.admin.restore'), 200);
+        }
     }
 }

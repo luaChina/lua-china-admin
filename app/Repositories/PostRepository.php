@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 /**
  * Created by PhpStorm.
  * User: hejunwei
@@ -18,6 +18,9 @@ class PostRepository extends BaseRepository
 
     public function getPagination(bool $withTrashed = false)
     {
-        return $this->model->with('tag', 'user')->paginate();
+        if ($withTrashed) {
+            return $this->model->with('postTag', 'user')->withTrashed()->paginate();
+        }
+        return $this->model->with('postTag', 'user')->paginate();
     }
 }

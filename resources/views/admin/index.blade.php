@@ -30,19 +30,24 @@
                 <td>{{ $admin->updated_at}}</td>
                 <td>{{ $admin->deleted_at? __('system.user.locked') : __('system.user.normal') }}</td>
                 <td>@if($admin->id === 1)
+                        {{--super user--}}
                         <button type="button" class="btn btn-block">^_^</button>
                     @else
                         <a href="/admins/{{ $admin->id }}/edit" class="btn btn-primary">编辑</a>
                         @if($admin->deleted_at === null)
-                            <button type="button" class="btn btn-danger">禁用</button>
+                            <button type="button" class="btn btn-danger"
+                                    @click="deleteAlert('/admins/{{ $admin->id }}')">禁用
+                            </button>
                         @else
-                            <button type="button" class="btn btn-success">恢复</button>
+                            <button type="button" class="btn btn-success"
+                                    @click="restore('/admins/{{ $admin->id }}/restore')">恢复
+                            </button>
                         @endif
                     @endif
                 </td>
             </tr>
         @endforeach
         </tbody>
-
     </table>
+    {{ $admins->links() }}
 @endsection

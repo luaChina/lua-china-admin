@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         if (config('app.env') === 'production') {
             $this->call(AdminSeeder::class);
-            $this->call(TagSeeder::class);
+            $this->call(PostTagSeeder::class);
         } else {
             $this->call(AdminSeeder::class);
             $this->call(UserSeeder::class);
-            $this->call(TagSeeder::class);
+            $this->call(PostTagSeeder::class);
             $this->call(PostSeeder::class);
             $this->call(CommentSeeder::class);
             $this->call(FavorSeeder::class);

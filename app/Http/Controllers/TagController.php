@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\TagRepository;
+use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
 
 class TagController extends Controller

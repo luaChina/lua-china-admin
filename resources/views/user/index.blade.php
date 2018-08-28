@@ -34,9 +34,9 @@
                 <td>
                     <a href="/users/{{ $user->id }}/edit" class="btn btn-primary">编辑</a>
                     @if($user->deleted_at === null)
-                        <button type="button" class="btn btn-danger">禁用</button>
+                        <button type="button" class="btn btn-danger" @click="deleteAlert('/users/{{ $user->id }}')">禁用</button>
                     @else
-                        <button type="button" class="btn btn-success">恢复</button>
+                        <button type="button" class="btn btn-success" @click="restore('/users/{{ $user->id }}/restore')">恢复</button>
                     @endif
                 </td>
             </tr>

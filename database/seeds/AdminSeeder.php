@@ -9,7 +9,7 @@ class AdminSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\App\Repository\AdminRepository $adminRepository, \App\Repository\AdminPermissionRepository $adminPermissionRepository)
+    public function run(\App\Repositories\AdminRepository $adminRepository, \App\Repositories\AdminPermissionRepository $adminPermissionRepository)
     {
         $admin = $adminRepository->create([
             'name'     => 'horan',

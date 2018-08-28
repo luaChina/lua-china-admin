@@ -9,7 +9,7 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\App\Repository\UserRepository $userRepository)
+    public function run(\App\Repositories\UserRepository $userRepository)
     {
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 32; $i++) {

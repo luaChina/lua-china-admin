@@ -2,19 +2,19 @@
 
 use Illuminate\Database\Seeder;
 
-class TagSeeder extends Seeder
+class PostTagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run(\App\Repository\TagRepository $tagRepository)
+    public function run(\App\Repositories\PostTagRepository $postTagRepository)
     {
-        $tagRepository->create([
+        $postTagRepository->create([
             'type' => 'openresty'
         ]);
-        $tagRepository->create([
+        $postTagRepository->create([
             'type' => 'lua'
         ]);
     }

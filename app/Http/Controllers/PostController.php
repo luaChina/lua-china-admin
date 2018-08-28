@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\PostRepository;
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -78,8 +78,23 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id, PostRepository $postRepository)
     {
-        //
+        $post = $postRepository->find($id);
+        if($post->delete()){
+            return response()->json(['status' => 0, 'message' => 'success'], 200);
+        } else {
+            return response()->json(trans('error.post.delete'), 200);
+        }
+    }
+
+    public function restore(int $id, PostRepository $postRepository)
+    {
+        $post = $postRepository->find($id, true);
+        if($post->restore()){
+            return response()->json(['status' => 0, 'message' => 'success'], 200);
+        } else {
+            return response()->json(trans('error.post.restore'), 200);
+        }
     }
 }

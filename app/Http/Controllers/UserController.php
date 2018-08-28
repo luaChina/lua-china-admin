@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\UserRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -86,8 +86,23 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id, UserRepository $userRepository)
     {
-        //
+        $user = $userRepository->find($id);
+        if($user->delete()){
+            return response()->json(['status' => 0, 'message' => 'success'], 200);
+        } else {
+            return response()->json(trans('error.user.delete'), 200);
+        }
+    }
+
+    public function restore(int $id, UserRepository $userRepository)
+    {
+        $user = $userRepository->find($id, true);
+        if($user->restore()){
+            return response()->json(['status' => 0, 'message' => 'success'], 200);
+        } else {
+            return response()->json(trans('error.user.restore'), 200);
+        }
     }
 }

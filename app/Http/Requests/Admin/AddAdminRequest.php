@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Repository\AdminPermissionRepository;
+use App\Repositories\AdminPermissionRepository;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 

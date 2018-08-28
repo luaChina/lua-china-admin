@@ -9,7 +9,7 @@ class CommentSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\App\Repository\PostRepository $postRepository, \App\Repository\UserRepository $userRepository, \App\Repository\CommentRepository $commentRepository)
+    public function run(\App\Repositories\PostRepository $postRepository, \App\Repositories\UserRepository $userRepository, \App\Repositories\CommentRepository $commentRepository)
     {
         $faker = Faker\Factory::create();
         $posts = $postRepository->get();

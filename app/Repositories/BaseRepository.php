@@ -6,7 +6,7 @@
  * Time: 18:22
  */
 
-namespace App\Repository;
+namespace App\Repositories;
 
 
 class BaseRepository
@@ -34,8 +34,11 @@ class BaseRepository
         return $this->model->create($massArr);
     }
 
-    public function find(int $id)
+    public function find(int $id, bool $withTrashed = false)
     {
+        if ($withTrashed) {
+            return $this->model->withTrashed()->findOrFail($id);
+        }
         return $this->model->findOrFail($id);
     }
 

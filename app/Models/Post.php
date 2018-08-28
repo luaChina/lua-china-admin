@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    public function tag()
+    use SoftDeletes;
+
+    public function postTag()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsTo(PostTag::class);
     }
 
     public function user()
