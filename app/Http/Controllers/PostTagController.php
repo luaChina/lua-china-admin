@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\TagRepository;
+use App\Repositories\PostTagRepository;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class PostTagController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TagRepository $tagRepository)
+    public function index(PostTagRepository $postTagRepository)
     {
-        return view('tag.index')->with(['tags' => $tagRepository->getPagination(true)]);
+        return view('tag.index')->with(['tags' => $postTagRepository->getPagination()]);
     }
 
     /**

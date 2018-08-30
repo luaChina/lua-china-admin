@@ -45,7 +45,7 @@
                 <a href="/comments">
                     <el-menu-item index="3-2">评论列表</el-menu-item>
                 </a>
-                <a href="/tags">
+                <a href="/posts/tags">
                     <el-menu-item index="3-3">文章标签列表</el-menu-item>
                 </a>
             </el-menu-item-group>
