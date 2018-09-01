@@ -13,7 +13,7 @@
     <!-- Fonts -->
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css', true) }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -26,6 +26,6 @@
     </el-container>
 </div>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js', true) }}"></script>
 </body>
 </html>
