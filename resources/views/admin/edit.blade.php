@@ -45,7 +45,7 @@
             <div class="col-md-2">
                 <label for="email">邮箱地址</label>
             </div>
-            <div class="col-md-6  mb-3">
+            <div class="col-md-6 mb-3">
                 <input name="email" value="{{ old('email', $admin->email) }}" type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" id="email" placeholder="name@example.com" required>
                 <span class="invalid-tooltip">
                     <strong>{{ $errors->has('email') ? $errors->first('email') : '请输入邮件地址'}}</strong>
