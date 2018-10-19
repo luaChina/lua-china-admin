@@ -50,32 +50,29 @@ const app = new Vue({
             })
         },
         deleteAlert(url) {
-            this.$confirm('是否下架？', '警告', {
-                confirmButtonText: '下架',
-                callback: action => {
-                    axios.delete(url).then(response => {
-                        console.log(response.data)
-                        if (response.status === 200 && response.data.status === 0) {
-                            this.$message({
-                                type: 'success',
-                                message: '操作成功'
-                            });
-                        } else {
-                            this.$message({
-                                type: 'error',
-                                message: '操作失败'
-                            });
-                        }
-                        setTimeout(()=>{
-                            window.location.reload();
-                        }, 1000)
-                    }).catch(err => {
+            this.$confirm('确认操作？', '警告').then(() => {
+                axios.delete(url).then(response => {
+                    console.log(response.data)
+                    if (response.status === 200 && response.data.status === 0) {
+                        this.$message({
+                            type: 'success',
+                            message: '操作成功'
+                        });
+                    } else {
                         this.$message({
                             type: 'error',
-                            message: err.message
+                            message: '操作失败'
                         });
-                    })
-                }
+                    }
+                    setTimeout(()=>{
+                        window.location.reload();
+                    }, 1000)
+                }).catch(err => {
+                    this.$message({
+                        type: 'error',
+                        message: err.message
+                    });
+                })
             });
         }
     }
