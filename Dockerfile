@@ -5,7 +5,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install pdo mbstring
 WORKDIR /app
 COPY . /app
-RUN composer install
+RUN composer install && cp .env.example .env && php artisan key:generate
 RUN rm package-lock.json && npm install && npm run prod
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
