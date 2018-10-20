@@ -6,7 +6,7 @@ RUN docker-php-ext-install pdo mbstring
 WORKDIR /app
 COPY . /app
 RUN composer install
-RUN npm install && npm run build --prod
+RUN rm package-lock.json && npm install && npm run prod
 
 CMD php artisan serve --host=0.0.0.0 --port=8000
 EXPOSE 8000
