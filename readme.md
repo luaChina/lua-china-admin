@@ -17,3 +17,7 @@
 * lodash
 * vue
 * element-ui
+
+## 部署
+* `cp .env.example .env`
+* `docker-compose up -d`
