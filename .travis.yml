@@ -5,7 +5,7 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 
 install:
-- ssh -o "StrictHostKeyChecking no" root@115.28.82.133 "cd /var/www/lua-china-admin && git pull && docker-compose down && docker-compose up"
+- ssh -o "StrictHostKeyChecking no" root@115.28.82.133 "cd /var/www/lua-china-admin && git pull && docker-compose down && docker-compose up -d"
 
 after_success:
  - rm -rf ~/.ssh
