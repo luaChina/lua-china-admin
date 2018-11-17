@@ -27,10 +27,9 @@ Route::group([
     Route::patch('/users/{id}/restore', 'UserController@restore');
 
     Route::group([
-        'prefix' => 'posts'
     ], function() {
-        Route::resource('/', 'PostController');
-        Route::resource('/tags', 'PostTagController');
-        Route::patch('/{id}/restore', 'PostController@restore');
+        Route::resource('/posts', 'PostController');
+        Route::resource('/posts/tags', 'PostTagController');
+        Route::patch('/posts/{id}/restore', 'PostController@restore');
     });
 });
