@@ -84,7 +84,7 @@ class PostController extends Controller
         if($post->delete()){
             return response()->json(['status' => 0, 'message' => 'success'], 200);
         } else {
-            return response()->json(trans('error.post.delete'), 200);
+            return response()->json(trans('errors.post.delete'), 200);
         }
     }
 
@@ -94,7 +94,7 @@ class PostController extends Controller
         if($post->restore()){
             return response()->json(['status' => 0, 'message' => 'success'], 200);
         } else {
-            return response()->json(trans('error.post.restore'), 200);
+            return response()->json(trans('errors.post.restore'), 200);
         }
     }
 }

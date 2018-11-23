@@ -92,7 +92,7 @@ class UserController extends Controller
         if($user->delete()){
             return response()->json(['status' => 0, 'message' => 'success'], 200);
         } else {
-            return response()->json(trans('error.user.delete'), 200);
+            return response()->json(trans('errors.user.delete'), 200);
         }
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
         if($user->restore()){
             return response()->json(['status' => 0, 'message' => 'success'], 200);
         } else {
-            return response()->json(trans('error.user.restore'), 200);
+            return response()->json(trans('errors.user.restore'), 200);
         }
     }
 }

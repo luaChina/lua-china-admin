@@ -157,7 +157,7 @@ class AdminController extends Controller
         if($admin->restore()){
             return response()->json(['status' => 0, 'message' => 'success'], 200);
         } else {
-            return response()->json(trans('error.admin.restore'), 200);
+            return response()->json(trans('errors.admin.restore'), 200);
         }
     }
 }
