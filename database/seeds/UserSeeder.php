@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
             'name'     => 'horan',
             'avatar'   => $faker->imageUrl(),
             'email'    => $faker->safeEmail,
-            'phone'    => '86_13571899655',
+            'phone'    => '13571899655',
             'password' => md5('123456')
         ]);
         for ($i = 0; $i < 31; $i++) {
