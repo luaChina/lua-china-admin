@@ -3,6 +3,7 @@ language: php
 before_install:
 - openssl aes-256-cbc -K $encrypted_8cc84dc4d66a_key -iv $encrypted_8cc84dc4d66a_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
+- export DOCKER_ID_USER="$docker_user"
 
 install:
 - cp .env.example .env
