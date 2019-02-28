@@ -11,7 +11,7 @@ before_install:
 install:
 - cp .env.example .env
 - docker run --rm -it --volume $(pwd):/app prooph/composer:7.2 install
-- docker run --rm -it --volume $(pwd):/app -w /app --entrypoint php prooph/composer:7.2 artisan key:generate
+- docker run --rm -it --volume $(pwd):/app -w /app --entrypoint php prooph/composer:7.2 artisan key:generate --force
 - docker build -t lua-china-admin:0.1 .
 - docker login -u $docker_user -p $docker_password
 - docker tag lua-china-admin:0.1 $DOCKER_ID_USER/lua-china-admin:0.1
