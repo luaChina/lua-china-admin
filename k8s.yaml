@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lua-china
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: lua-china
+  name: admin
+spec:
+  rules:
+    - host: admin.lua-china.local
+      http:
+        paths:
+          - backend:
+              serviceName: admin
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: lua-china
+  name: admin
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+       app: admin
+    spec:
+      containers:
+        - name: admin
+          image: horan/lua-china-admin:0.1 # 替换为你自己的镜像
+          ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+   namespace: lua-china
+   name: admin
+spec:
+ selector:
+   app: admin
+ clusterIP: None
+ ports:
+   - name: http
+     protocol: TCP
+     port: 80

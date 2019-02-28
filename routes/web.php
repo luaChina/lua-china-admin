@@ -28,6 +28,7 @@ Route::group([
 
     Route::group([
     ], function() {
+        Route::resource('/comments', 'CommentController');
         Route::resource('/posts', 'PostController');
         Route::resource('/posts/tags', 'PostTagController');
         Route::patch('/posts/{id}/restore', 'PostController@restore');
